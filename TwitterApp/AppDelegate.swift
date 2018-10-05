@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "ZQVe0PW8Q82wKcQkIBISghaCJ", consumerSecret: "Vzigxxlf0c0wujFNC73wqN7eflZmR3XmjmPU47WpqcSLN3KeT8")
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
